@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "d5iwMgdTAA1omYFHIkuU1c0A3f54mxWAC9fC8fVWK0M3bFQBRmpHMLZo8lzHncszIVb1QwxpJyQNDWu8i7FdxQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\VVogns\\source\\repos\\FinTech\\FinTech\\FinTech.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\VVogns\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\VVogns\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\VVogns\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "C:\\Users\\VVogns\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "C:\\Users\\VVogns\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "C:\\Users\\VVogns\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
