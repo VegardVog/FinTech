@@ -66,5 +66,9 @@ namespace FinTech.Repository
             users.RemoveAll(u => u.id == id);
         }
 
+        User IUserRepository.update(User user)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

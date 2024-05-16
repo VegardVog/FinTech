@@ -37,3 +37,4 @@ build/
 .env
 
 appsetting.local.json
+appsetting.Development.json

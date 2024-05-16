@@ -45,9 +45,17 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNet.SignalR.Core": {
+              "target": "Package",
+              "version": "[2.4.3, )"
+            },
             "MySql.Data": {
               "target": "Package",
               "version": "[8.4.0, )"
+            },
+            "MySqlConnector.DependencyInjection": {
+              "target": "Package",
+              "version": "[2.3.6, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

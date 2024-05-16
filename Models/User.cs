@@ -2,11 +2,11 @@
 {
     public class User
     {
-        public required int Id { get; set; }
-        public required string UserName { get; set; }
+        public required int id { get; set; }
+        public required string userName { get; set; }
 
-        public string Email { get; set; } = string.Empty;
-        public string Password { get; set; } = string.Empty;
+        public string email { get; set; } = string.Empty;
+        public string password { get; set; } = string.Empty;
 
     }
 }
