@@ -38,3 +38,4 @@ build/
 
 appsetting.local.json
 appsetting.Development.json
+appsettings.Development.json
