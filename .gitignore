@@ -35,3 +35,5 @@ build/
 
 ### ENV FILES ###
 .env
+
+appsetting.local.json
