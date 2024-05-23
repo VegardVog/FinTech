@@ -1,12 +1,23 @@
-﻿namespace FinTech.Models
-{
-    public class User
-    {
-        public required int id { get; set; }
-        public required string userName { get; set; }
+﻿using FinTech.Repository.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
-        public string email { get; set; } = string.Empty;
-        public string password { get; set; } = string.Empty;
+namespace FinTech.Models
+{
+    public class User : IModel
+    {
+
+        [Key]
+        public int Id { get; set; }
+
+        [Required]
+        public string UserName { get; set; }
+
+        [Required]
+        
+        public string Email { get; set; } = string.Empty;
+
+        [Required]
+        public string Password { get; set; } = string.Empty;
 
     }
 }

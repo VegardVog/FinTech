@@ -1,74 +1,47 @@
-﻿using FinTech.Models;
+﻿using AutoMapper;
+using FinTech.Data;
+using FinTech.Models;
+using FinTech.Models.DTOs;
+using FinTech.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinTech.Repository
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : Repository<User>, IUserRepository
     {
+        
+        private readonly AppDbContext _context;
+        private readonly IMapper _mapper;   
 
-        private List<User> users = new List<User>();
-        private int nextId = 1;
-        public UserRepository()
+        public UserRepository(AppDbContext context, IMapper mapper) : base(context)
         {
-
+            _mapper = mapper;   
         }
-        public IEnumerable<User> getAll()
+        public async Task AddAsync(UserDTO entity)
         {
-            return users;
-        }
-
-        //Can return null
-        public User? getUser(int id)
-        {
-            return users.Find(u => u.id == id);
+            var user = _mapper.Map<User>(entity);
+            await base.AddAsync(user);
         }
 
-
-        //Can return null
-        public User? getByUserName(string userName)
+        public async Task<User?> GetByUserNameAsync(string userName)
         {
-  
-            return users.Find(u => u.userName == userName);
-
+            return await _context.Users.SingleOrDefaultAsync(u => u.UserName == userName);
         }
 
-
-
-        public bool update(User user)
+        public async Task<bool> RemoveAsync(UserDTO entity)
         {
-            if(user == null)
-            {
-                throw new ArgumentNullException(nameof(user));
-            }
-            int index = users.FindIndex(u => u.id == user.id);
-            if(index == -1)
-            {
-                return false;
-            }
-            users.RemoveAt(index);
-            users.Add(user);
-            return true;
-
+            var user = _mapper.Map<User>(entity);
+            return await base.RemoveAsync(user);
         }
 
-        public User add(User user)
+        public async Task UpdateAsync(UserDTO entity)
         {
-            if (user == null)
-            {
-                throw new ArgumentNullException(nameof(user));
-            }
-            user.id = nextId++;
-            users.Add(user);
-            return user;
-        }
-
-        public void delete(int id)
-        {
-            users.RemoveAll(u => u.id == id);
-        }
-
-        User IUserRepository.update(User user)
-        {
-            throw new NotImplementedException();
+            var user = _mapper.Map<User>(entity);
+            await base.UpdateAsync(user);
         }
     }
+
+
+
 }
+
