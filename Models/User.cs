@@ -13,7 +13,7 @@ namespace FinTech.Models
         public string UserName { get; set; }
 
         [Required]
-        
+
         public string Email { get; set; } = string.Empty;
 
         [Required]
