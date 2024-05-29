@@ -19,6 +19,7 @@ import axios from "axios";
 import { computed, defineComponent, reactive } from "vue";
 import { User } from "@/interfaces/types";
 import store from "@/store";
+import { getStockData } from "../StockAPI/stockData";
 
 export default defineComponent({
   name: "LoginForm",
@@ -44,8 +45,9 @@ export default defineComponent({
       }
     };
 
-    const login = () => {
+    const login = async () => {
       store.dispatch("loginUser");
+      getStockData("AAP");
     };
 
     return {
