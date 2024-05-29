@@ -1,6 +1,0 @@
-@FinTech_HostAddress = http://localhost:5190
-
-GET {{FinTech_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
