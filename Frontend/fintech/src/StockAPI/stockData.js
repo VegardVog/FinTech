@@ -1,11 +1,10 @@
+import axios from "axios";
+
 export async function getStockData(symbol) {
-  const finnhub = require("finnhub");
+  const env = process.env.VUE_APP_API_KEY;
 
-  const api_key = finnhub.ApiClient.instance.authentications["api_key"];
-  api_key.apiKey = process.env.API_KEY;
-  const finnhubClient = new finnhub.DefaultApi();
-
-  finnhubClient.quote(symbol, (error, data, response) => {
-    console.log(data);
-  });
+  const result = await axios.get(
+    `https://finnhub.io/api/v1/quote?token=${env}&symbol=${symbol}`
+  );
+  console.log(result.data);
 }
