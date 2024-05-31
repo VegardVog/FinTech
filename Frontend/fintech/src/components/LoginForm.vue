@@ -47,7 +47,7 @@ export default defineComponent({
 
     const login = async () => {
       store.dispatch("loginUser");
-      //getStockData("S&P500");
+      getStockData("AAPL");
     };
 
     return {
