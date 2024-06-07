@@ -20,10 +20,14 @@ import { computed, defineComponent, reactive } from "vue";
 import { User } from "@/interfaces/types";
 import store from "@/store";
 import { getStockData } from "../StockAPI/stockData";
+import { useLoggedInStore } from "../store/loggedInStore";
 
 export default defineComponent({
   name: "LoginForm",
   setup() {
+    const loggedInStore = useLoggedInStore();
+
+    const isLoggedIn = computed(() => loggedInStore.isLoggedIn);
     const form = reactive({
       userName: "",
       password: "",
@@ -37,23 +41,21 @@ export default defineComponent({
           form
         );
 
-        login();
-
-        console.log(computed(() => store.getters.isLoggedIn));
+        loginUser();
       } catch (error) {
         console.error("Error: " + error);
       }
     };
 
-    const login = async () => {
-      store.dispatch("loginUser");
-      getStockData("AAPL");
+    const loginUser = async () => {
+      loggedInStore.login();
+      //getStockData("AAPL");
     };
 
     return {
       form,
       handleSubmit,
-      login,
+      loginUser,
     };
   },
 });

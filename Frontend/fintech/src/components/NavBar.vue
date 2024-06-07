@@ -15,6 +15,7 @@
 </template>
 
 <script lang="ts">
+import { useLoggedInStore } from "@/store/loggedInStore";
 import { computed, defineComponent } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
@@ -22,7 +23,11 @@ import { useStore } from "vuex";
 export default defineComponent({
   name: "NavComponent",
   setup() {
-    const store = useStore();
+    const loggedInStore = useLoggedInStore();
+
+    const isLoggedIn = computed(() => loggedInStore.isLoggedIn);
+
+    //const store = useStore();
     const router = useRouter();
     const navItems = [
       { name: "Home", route: "/" },
@@ -41,20 +46,27 @@ export default defineComponent({
         isLogout: true,
       },
     ];
-    const isLoggedIn = computed(() => store.getters.isLoggedIn);
+
+    //const isLoggedIn = computed(() => store.getters.isLoggedIn);
+    // const isLoggedInBool = computed(() => isLoggedIn);
 
     const filteredNavItems = computed(() =>
       navItems.filter(
         (nav) =>
           nav.shownWhenLoggedOut === undefined ||
-          nav.shownWhenLoggedOut !== isLoggedIn.value
+          nav.shownWhenLoggedOut === !isLoggedIn.value
       )
     );
+    console.log(isLoggedIn);
+    console.log(navItems);
 
-    const handleClick = (navItem: { isLogout: boolean }) => {
+    // || nav.shownWhenLoggedOut !== isLoggedIn.value
+
+    const handleClick = (navItem: { isLogout?: boolean }) => {
       if (navItem.isLogout) {
         console.log("asd");
-        store.dispatch("logoutUser");
+        //store.dispatch("logoutUser");
+        loggedInStore.logout();
         router.push("/");
       }
     };
